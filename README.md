@@ -28,7 +28,7 @@ To develop a Recurrent Neural Network model for stock price prediction.
 
 ## PROGRAM
 
-python
+```python
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -36,10 +36,10 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from keras import layers
 from keras.models import Sequential
-
+```
 ### Read Train Data & Normalize:
 
-python
+```python
 
 dataset_train = pd.read_csv('trainset.csv')
 
@@ -70,10 +70,10 @@ X_train.shape
 
 length = 60
 n_features = 1
-
+```
 ### Build & Train Model:
 
-python
+```python
 model = Sequential([layers.SimpleRNN(50,input_shape=(60,1)),
                     layers.Dense(1)])
 
@@ -105,11 +105,11 @@ X_test = np.array(X_test)
 X_test = np.reshape(X_test,(X_test.shape[0], X_test.shape[1],1))
 
 X_test.shape
-
+```
 
 ### Predict Values & Plot:
 
-python
+```python
 
 predicted_stock_price_scaled = model.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price_scaled)
@@ -123,12 +123,12 @@ plt.ylabel('Google Stock Price')
 plt.legend()
 plt.show()
 
-
+```
 ### Check MSE Score:
-python
+```python
 from sklearn.metrics import mean_squared_error as mse
 mse(y_test,predicted_stock_price)
-
+```
 
 ## OUTPUT
 
